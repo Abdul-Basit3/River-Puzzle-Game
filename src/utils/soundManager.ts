@@ -153,8 +153,6 @@ class SoundManager {
     // Leafy rustle and crunch sound
     if (!this.audioContext) return;
     
-    const now = this.audioContext.currentTime;
-    
     // Rustling leaves sound (high frequency noise bursts)
     for (let i = 0; i < 5; i++) {
       setTimeout(() => {
