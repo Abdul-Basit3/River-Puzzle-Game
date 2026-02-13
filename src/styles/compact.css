@@ -1,0 +1,127 @@
+/* Compact layout overrides for no-scroll fit */
+.stats {
+  gap: 20px !important;
+  margin-bottom: 5px !important;
+  padding: 8px 15px !important;
+  border-radius: 12px !important;
+}
+
+.stat-label {
+  font-size: 0.7rem !important;
+}
+
+.stat-value {
+  font-size: 1.2rem !important;
+}
+
+.sound-toggle,
+.volume-settings-toggle {
+  width: 35px !important;
+  height: 35px !important;
+  font-size: 1rem !important;
+}
+
+.game-screen {
+  height: 100vh !important;
+  padding: 5px !important;
+}
+
+.game-board {
+  gap: 60px !important;
+  align-items: stretch !important;
+  grid-template-columns: 1.5fr 2fr 1.5fr !important;
+}
+
+.river {
+  position: relative;
+  height: 100% !important;
+  min-height: 400px !important;
+  border-radius: 15px !important;
+  overflow: visible !important;
+  min-width: 300px !important;
+}
+
+.bank {
+  padding: 15px !important;
+  min-width: 200px !important;
+  height: 100% !important;
+  border-radius: 15px !important;
+  min-height: 400px !important;
+}
+
+.bank-label {
+  font-size: 1.3rem !important;
+  margin-bottom: 15px !important;
+  padding: 8px !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-radius: 10px !important;
+}
+
+.bank-entities {
+  gap: 15px !important;
+  justify-content: flex-start !important;
+  padding: 10px 0 !important;
+}
+
+.entity-icon {
+  padding: 12px !important;
+  border-radius: 12px !important;
+  min-height: 80px !important;
+}
+
+.entity-emoji {
+  font-size: 2.5rem !important;
+}
+
+.entity-name {
+  font-size: 0.8rem !important;
+}
+
+.boat-body {
+  min-width: 150px !important;
+}
+
+.boat-hull {
+  padding: 10px 15px 15px 15px !important;
+  border-radius: 40px 40px 60px 60px !important;
+}
+
+.boat-deck {
+  padding: 8px !important;
+  margin: -3px 8px 8px 8px !important;
+}
+
+.boat-title {
+  font-size: 0.85rem !important;
+  margin-bottom: 5px !important;
+}
+
+.boat-entities {
+  gap: 8px !important;
+  margin-bottom: 8px !important;
+}
+
+.cross-button {
+  padding: 8px !important;
+  font-size: 0.85rem !important;
+}
+
+@media (max-width: 768px) {
+  .game-board {
+    gap: 30px !important;
+  }
+}
+
+@media (max-height: 700px) {
+  .game-board {
+    gap: 40px !important;
+  }
+  
+  .entity-emoji {
+    font-size: 2rem !important;
+  }
+  
+  .boat-body {
+    min-width: 130px !important;
+  }
+}

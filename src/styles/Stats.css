@@ -1,0 +1,256 @@
+.stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 20px;
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+  margin: 0 auto 20px;
+  position: relative;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 600;
+}
+
+.stat-value {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #667eea;
+}
+
+.audio-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  position: relative;
+}
+
+.sound-toggle,
+.volume-settings-toggle {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sound-toggle:hover,
+.volume-settings-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.sound-toggle:active,
+.volume-settings-toggle:active {
+  transform: scale(0.95);
+}
+
+.volume-controls {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  min-width: 280px;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.volume-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.volume-control:last-child {
+  margin-bottom: 0;
+}
+
+.volume-control label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 70px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.volume-icon {
+  font-size: 1.2rem;
+}
+
+.volume-label {
+  font-size: 0.85rem;
+}
+
+.volume-slider {
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  background: #e0e0e0;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+}
+
+.volume-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.volume-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+}
+
+.volume-slider::-moz-range-thumb:hover {
+  transform: scale(1.2);
+}
+
+.volume-value {
+  min-width: 45px;
+  text-align: right;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #667eea;
+}
+
+/* Tablet landscape */
+@media (max-width: 1024px) {
+  .stats {
+    gap: 30px;
+    padding: 18px;
+  }
+  
+  .stat-value {
+    font-size: 1.6rem;
+  }
+  
+  .sound-toggle,
+  .volume-settings-toggle {
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+  }
+}
+
+/* Tablet portrait */
+@media (max-width: 768px) {
+  .stats {
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 100%;
+    padding: 15px;
+  }
+  
+  .stat-value {
+    font-size: 1.5rem;
+  }
+  
+  .volume-controls {
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 260px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .stats {
+    gap: 15px;
+    padding: 12px;
+    border-radius: 12px;
+  }
+  
+  .stat-item {
+    gap: 3px;
+  }
+  
+  .stat-label {
+    font-size: 0.8rem;
+  }
+  
+  .stat-value {
+    font-size: 1.3rem;
+  }
+  
+  .sound-toggle,
+  .volume-settings-toggle {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+  
+  .volume-controls {
+    min-width: 240px;
+    padding: 15px;
+  }
+  
+  .volume-control {
+    margin-bottom: 12px;
+  }
+  
+  .volume-control label {
+    min-width: 60px;
+    font-size: 0.85rem;
+  }
+  
+  .volume-value {
+    min-width: 40px;
+    font-size: 0.8rem;
+  }
+}

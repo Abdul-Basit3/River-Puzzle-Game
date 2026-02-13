@@ -1,0 +1,503 @@
+.boat {
+  position: absolute;
+  z-index: 10;
+  transition: left 1s ease-in-out, right 1s ease-in-out, transform 1s ease-in-out;
+}
+
+.boat::before {
+  content: '〰️〰️〰️';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5rem;
+  opacity: 0.6;
+  animation: waterRipple 2s ease-in-out infinite;
+}
+
+@keyframes waterRipple {
+  0%, 100% {
+    transform: translateX(-50%) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateX(-50%) scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+.boat-left {
+  left: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.boat-right {
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.boat-crossing.boat-left {
+  animation: crossToRight 1s ease-in-out;
+}
+
+.boat-crossing.boat-right {
+  animation: crossToLeft 1s ease-in-out;
+}
+
+@keyframes crossToRight {
+  0% {
+    left: 5%;
+    transform: translateY(-50%) scale(1) rotate(0deg);
+  }
+  50% {
+    left: 50%;
+    transform: translateY(-50%) scale(1.1) rotate(2deg);
+  }
+  100% {
+    left: 95%;
+    transform: translateY(-50%) scale(1) rotate(0deg);
+  }
+}
+
+@keyframes crossToLeft {
+  0% {
+    right: 5%;
+    transform: translateY(-50%) scale(1) rotate(0deg);
+  }
+  50% {
+    right: 50%;
+    transform: translateY(-50%) scale(1.1) rotate(-2deg);
+  }
+  100% {
+    right: 95%;
+    transform: translateY(-50%) scale(1) rotate(0deg);
+  }
+}
+
+.boat-crossing {
+  animation: crossingRiver 1s ease-in-out;
+  z-index: 20;
+}
+
+.boat-crossing .boat-hull {
+  animation: boatRocking 1s ease-in-out;
+}
+
+@keyframes crossingRiver {
+  0% {
+    transform: translateY(-50%) scale(1) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-55%) scale(1.05) rotate(-3deg);
+  }
+  50% {
+    transform: translateY(-50%) scale(1.1) rotate(2deg);
+  }
+  75% {
+    transform: translateY(-55%) scale(1.05) rotate(-2deg);
+  }
+  100% {
+    transform: translateY(-50%) scale(1) rotate(0deg);
+  }
+}
+
+@keyframes boatRocking {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-2deg) translateY(-3px);
+  }
+  50% {
+    transform: rotate(1deg) translateY(-5px);
+  }
+  75% {
+    transform: rotate(-1deg) translateY(-3px);
+  }
+}
+
+.boat-body {
+  position: relative;
+  min-width: 220px;
+  text-align: center;
+}
+
+.boat-hull {
+  background: linear-gradient(135deg, #8d6e63 0%, #6d4c41 100%);
+  border-radius: 50px 50px 80px 80px;
+  padding: 15px 25px 25px 25px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  border: 3px solid #5d4037;
+  position: relative;
+  overflow: visible;
+}
+
+/* Boat bottom keel */
+.boat-hull::before {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 15px;
+  background: linear-gradient(135deg, #6d4c41 0%, #5d4037 100%);
+  border-radius: 0 0 40px 40px;
+  border: 2px solid #4a2c20;
+  border-top: none;
+}
+
+/* Boat mast */
+.boat-hull::after {
+  content: '';
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 45px;
+  background: linear-gradient(180deg, #5d4037 0%, #4a2c20 100%);
+  border-radius: 2px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.boat-deck {
+  background: linear-gradient(135deg, #a1887f 0%, #8d6e63 100%);
+  border-radius: 12px 12px 20px 20px;
+  padding: 8px;
+  margin: -3px 8px 8px 8px;
+  border: 2px solid #6d4c41;
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-height: 700px) {
+  .boat-deck {
+    padding: 6px;
+    margin: -2px 6px 6px 6px;
+  }
+}
+
+/* Sail */
+.boat-deck::before {
+  content: '⛵';
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  z-index: 1;
+  filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.3));
+  animation: sailWave 2s ease-in-out infinite;
+}
+
+/* Flag on mast */
+.boat-deck::after {
+  content: '🚩';
+  position: absolute;
+  top: -45px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1rem;
+  z-index: 2;
+  animation: flagWave 1.5s ease-in-out infinite;
+}
+
+@keyframes flagWave {
+  0%, 100% {
+    transform: translateX(-50%) rotate(0deg);
+  }
+  50% {
+    transform: translateX(-45%) rotate(10deg);
+  }
+}
+
+@keyframes sailWave {
+  0%, 100% {
+    transform: translateX(-50%) rotate(0deg);
+  }
+  50% {
+    transform: translateX(-50%) rotate(3deg);
+  }
+}
+
+.boat-portholes {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+  z-index: 1;
+}
+
+.porthole {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.5));
+}
+
+.boat-railing {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  color: #5d4037;
+  font-size: 1.2rem;
+  font-weight: bold;
+  opacity: 0.6;
+  z-index: 3;
+}
+
+.boat-body::before {
+  content: '🌊';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5rem;
+  opacity: 0;
+  animation: waterSplash 1s ease-in-out;
+}
+
+.boat-crossing .boat-body::before {
+  opacity: 1;
+}
+
+.boat-entities {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+@media (max-height: 700px) {
+  .boat-entities {
+    gap: 5px;
+    margin-bottom: 5px;
+  }
+}
+
+.boat-crossing .boat-entities {
+  transform: scale(1.1);
+}
+
+.boat-crossing .boat-entities .entity-icon {
+  animation: passengerBounce 1s ease-in-out;
+}
+
+.cross-button {
+  width: 100%;
+  padding: 8px;
+  background: #4caf50;
+  color: white;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+@media (max-height: 700px) {
+  .cross-button {
+    padding: 6px;
+    font-size: 0.75rem;
+  }
+}
+
+.cross-button:hover {
+  background: #45a049;
+}
+
+.crossing-indicator {
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 5px 10px;
+  border-radius: 15px;
+  margin-bottom: 10px;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+.empty-boat {
+  text-align: center;
+  font-size: 1rem;
+  color: #666;
+  padding: 10px;
+  font-style: italic;
+}
+
+.boat-title {
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 5px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-height: 700px) {
+  .boat-title {
+    font-size: 0.75rem;
+    margin-bottom: 3px;
+  }
+}
+
+.boat-instruction {
+  font-size: 0.9rem;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 8px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+@keyframes crossingRiver {
+  0% {
+    transform: translateY(-50%) scale(1) rotate(0deg);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+  25% {
+    transform: translateY(-60%) scale(1.1) rotate(-2deg);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  }
+  50% {
+    transform: translateY(-55%) scale(1.15) rotate(1deg);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  }
+  75% {
+    transform: translateY(-60%) scale(1.1) rotate(-1deg);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  }
+  100% {
+    transform: translateY(-50%) scale(1) rotate(0deg);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+}
+
+@keyframes waterSplash {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(0px) scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-5px) scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px) scale(0.8);
+  }
+}
+
+@keyframes passengerBounce {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  25% {
+    transform: translateY(-3px);
+  }
+  50% {
+    transform: translateY(-1px);
+  }
+  75% {
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+
+/* Tablet landscape */
+@media (max-width: 1024px) {
+  .boat-body {
+    min-width: 200px;
+  }
+  
+  .boat-hull {
+    padding: 12px 20px 20px 20px;
+  }
+  
+  .boat-entities {
+    gap: 6px;
+  }
+}
+
+/* Tablet portrait */
+@media (max-width: 768px) {
+  .boat {
+    position: relative;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    transform: none !important;
+    margin: 20px auto;
+    display: block;
+  }
+  
+  .boat-body {
+    min-width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  .boat-hull {
+    padding: 10px 18px 18px 18px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .boat {
+    margin: 15px auto;
+  }
+  
+  .boat-body {
+    max-width: 260px;
+    min-width: auto;
+  }
+  
+  .boat-hull {
+    padding: 8px 15px 15px 15px;
+    border-radius: 40px 40px 60px 60px;
+  }
+  
+  .boat-deck {
+    padding: 5px;
+    margin: -2px 5px 5px 5px;
+  }
+  
+  .boat-entities {
+    gap: 5px;
+    margin-bottom: 5px;
+  }
+  
+  .cross-button {
+    padding: 6px;
+    font-size: 0.75rem;
+  }
+  
+  .boat-title {
+    font-size: 0.7rem;
+  }
+  
+  .boat-instruction {
+    font-size: 0.8rem;
+    padding: 6px;
+  }
+}

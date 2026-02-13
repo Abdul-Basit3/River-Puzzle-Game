@@ -1,0 +1,52 @@
+.game-screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.game-board {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  gap: 20px;
+  min-height: 500px;
+}
+
+/* Tablet landscape */
+@media (max-width: 1024px) {
+  .game-board {
+    grid-template-columns: 1fr 1.5fr 1fr;
+    gap: 15px;
+    min-height: 450px;
+  }
+}
+
+/* Tablet portrait */
+@media (max-width: 768px) {
+  .game-screen {
+    padding: 15px;
+  }
+  
+  .game-board {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 20px;
+    min-height: auto;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .game-screen {
+    padding: 10px;
+  }
+  
+  .game-board {
+    gap: 15px;
+  }
+}
